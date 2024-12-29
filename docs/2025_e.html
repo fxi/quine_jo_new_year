@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2025 Quine Analysis - Binary Art Explanation</title>
+    <style>
+      body {
+        font-family: monospace;
+        line-height: 1.6;
+        margin: 2rem;
+        background: #f5f5f5;
+      }
+      pre {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+white-space: pre-wrap; /* Forces wrapping of text */
+    word-wrap: break-word; /* For older browsers, ensures long words break */
+    word-break: break-word; /* Ensures long words break */
+      }
+      iframe {
+        width: 175px;
+        height: 132px;
+        border: none;
+        background-color: #000000;
+        border-radius: 5px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>2025 Quine Explained</h1>
+    <h3>Date: December 29, 2024</h3>
+    <p>
+    This document analyzes a self-replicating JavaScript quine that displays
+    "2025" using binary patterns and color manipulation. The code creates an
+    animated display where each digit is represented by a 16-bit binary
+    pattern.
+    </p>
+
+    <iframe src="2025.html" title="2025 Content"></iframe>
+    <pre>
+
+Original Quine Code:
+--------------------
+
+&lt;body id=p bgcolor=x onload=&#39;setInterval(f=X/*Happy New Year Jo*/=&gt;{for(i=0,o=`&lt;pre&gt;`,t++,b=61166,w=22,c=&quot;#fff&quot;,l=f+o;i&lt;175;o+=++i%w?l[i].fontcolor([b,10408, 61102, 33442,b][i/w+6&amp;7]&amp;1&lt;&lt;i%w+t/5?c:t%w&lt;i?t%w-i/w:c):`\n`);p.innerHTML=o},t=99)&#39;&gt;
+</pre>
+
+<pre>
+
+Body:
+-----
+
+&lt;body                                      // page body 
+  id=&quot;p&quot;                                   // id. Hack! Any id set also create a global variable. Used in p.innerHTML.
+  bgcolor=&quot;x&quot;                              // Background color. Invalid color gives black. 
+  onload=&#39;&#39;                                // load the script bellow
+&gt;&lt;/body&gt;                                   //  
+
+
+Animation & Quine:
+-----------------
+
+setInterval(                                   // start animation 
+  (f = (X) /*Happy New Year Jo*/ =&gt; {          // callback and comment (will be highlighted).
+    for (                                      // loop 
+      i = 0,                                   // iterator for pixel selection                 
+      o = `&lt;pre&gt;`,                             // initial text as &lt;pre&gt; tag
+      t++,                                     // increment the animation frame 
+      b = 61166,                               // top line of &#39;2025&#39; which is the same as the bottom one. We save 5bytes.
+      w = 22,                                  // width of the animation 
+      c = &quot;#fff&quot;,                              // default color (white) 
+      l = f + o;                               // convert this function, all the code, in a string. It's our canvas for drawing. 
+      i &lt; 175;                                 // max character to print ( skip a bit for art) 
+      o +=                                     // output html, made with all characters if the quine. 
+        ++i % w                                // Check for line break, add a new line if needed ( see bellow )
+          ? l[i].fontcolor(                    // get the character and set the color. Calling fontcolor create a 'font' element. It's a hack. 
+              [                                // 2025, encoded in binary, stored as decimal, mirrored, line 1 to 5
+              b,                               // 1 ⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜  
+              10408,                           // 2 ⬜⬜⬛⬜⬛⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜
+              61102,                           // 3 ⬛⬛⬛⬜⬛⬛⬛⬜⬛⬜⬛⬜⬛⬛⬛⬜
+              33442,                           // 4 ⬛⬜⬜⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜⬛⬜
+              b][                              // 5 ⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜
+              (i / w + 6) &amp; 7                  // select the correct row  
+              ] &amp;                              // 
+                (1 &lt;&lt; ((i % w) + t / 5))       // bit shifting for animation 
+                ? c                            // -&gt; main color ! 
+                : t % w &lt; i                    // Rain effect condition
+                ? (t % w) - i / w              // -&gt; rainbow character colors for rain effect 
+                : c                            // else, use the main color for the comment highlight
+            )                                  // 
+          : `\n`                               // the new line mentionned earlier
+    );                                         //  
+    p.innerHTML = o;                           // Rewrite the page at each iteration 
+  }),                                          // 
+  (t = 99)                                     // Update each 99ms and.. instantiate our timer
+);                                             // done !
+<pre>

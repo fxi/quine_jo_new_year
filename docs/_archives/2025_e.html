@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2025 Quine Analysis - Binary Art Explanation</title>
+    <style>
+      body {
+        font-family: monospace;
+        line-height: 1.6;
+        margin: 2rem;
+        background: #f5f5f5;
+      }
+      pre {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+      .binary-grid {
+        font-family: monospace;
+        line-height: 1;
+      }
+      .binary-grid span {
+        display: inline-block;
+        width: 1.2em;
+        text-align: center;
+      }
+      .white {
+        background: white;
+        color: black;
+      }
+      .black {
+        background: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>2025 Quine Analysis</h1>
+    <h3>Date: December 29, 2024</h3>
+    <h2>Abstract</h2>
+    <p>
+      This document analyzes a self-replicating JavaScript quine that displays
+      "2025" using binary patterns and color manipulation. The code creates an
+      animated display where each digit is represented by a 16-bit binary
+      pattern.
+    </p>
+
+    <pre>
+Original Quine Code:
+------------------
+
+&lt;body id=p bgcolor=x onload=&#39;setInterval(f=X/*Happy New Year Jo*/=&gt;{for(i=0,o=`&lt;pre&gt;`,t++,b=61166,w=22,c=&quot;#fff&quot;,l=f+o;i&lt;175;o+=++i%w?l[i].fontcolor([b,10408, 61102, 33442,b][i/w+6&amp;7]&amp;1&lt;&lt;i%w+t/5?c:t%w&lt;i?t%w-i/w:c):`\n`);p.innerHTML=o},t=99)&#39;&gt;
+
+
+Code Explanation:
+---------------
+1. Structure Setup:
+   - The code is wrapped in a &lt;body> tag with id="p"
+   - An onload event triggers the animation using setInterval
+   - Initial variables: t=99 (timer), w=22 (width), c="#fff" (color)
+
+2. Binary Patterns Analysis:
+   Each number represents a line of the "2025" pattern (in reverse):
+
+   61166 first row:
+   <pre class="binary-grid">
+1110111011101110
+⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜
+   </pre>
+
+   10408 second row:
+   <pre class="binary-grid">
+0010100010101000
+⬜⬜⬛⬜⬛⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜
+   </pre>
+
+   61102 third row:
+   <pre class="binary-grid">
+1110111010101110
+⬛⬛⬛⬜⬛⬛⬛⬜⬛⬜⬛⬜⬛⬛⬛⬜
+   </pre>
+
+   33442 forth row:
+   <pre class="binary-grid">
+1000001010100010
+⬛⬜⬜⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜⬛⬜
+   </pre>
+
+   61166 fifth row:
+   <pre class="binary-grid">
+1110111011101110
+⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜
+   </pre>
+
+
+   Complete :
+   <pre class="binary-grid">
+⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜
+⬜⬜⬛⬜⬛⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜
+⬛⬛⬛⬜⬛⬛⬛⬜⬛⬜⬛⬜⬛⬛⬛⬜
+⬛⬜⬜⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜⬛⬜
+⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜
+   </pre>
+
+   Reversed:
+   <pre class="binary-grid">
+⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛
+⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜⬛⬜⬛⬜⬜
+⬜⬛⬛⬛⬜⬛⬜⬛⬜⬛⬛⬛⬜⬛⬛⬛
+⬜⬛⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜⬜⬜⬛
+⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛
+   </pre>
+
+
+
+
+
+3. Binary Operations:
+   - [i/w+6&7] : Selects which pattern to use based on current row
+   - &1<<i%w : Shifts 1 left by column position to check if bit is set
+   - t/5 : Creates animation effect by shifting patterns over time
+
+4. Display Logic:
+   - Creates a &lt;pre> element to maintain spacing
+   - Uses fontcolor() to colorize each character
+   - Adds newline every 22 characters (w=22)
+   - Updates DOM using p.innerHTML
+
+5. Animation:
+   - setInterval continuously updates the display
+   - t++ increases the timer to create animation
+   - Animation speed controlled by t/5 in bit shifting
+
+The binary patterns create the digits by turning specific pixels on (1) and off (0), 
+creating a 16-bit wide representation of each number in the sequence "2025".
+</pre>
+  </body>
+</html>
