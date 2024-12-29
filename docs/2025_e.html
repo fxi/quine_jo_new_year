@@ -14,13 +14,13 @@
         padding: 1rem;
         border-radius: 4px;
         overflow-x: auto;
-white-space: pre-wrap; /* Forces wrapping of text */
-    word-wrap: break-word; /* For older browsers, ensures long words break */
-    word-break: break-word; /* Ensures long words break */
+white-space: pre-wrap; 
+    word-wrap: break-word; 
+    word-break: break-word;
       }
       iframe {
         width: 175px;
-        height: 132px;
+        height: 145px;
         border: none;
         background-color: #000000;
         border-radius: 5px;
@@ -33,13 +33,7 @@ white-space: pre-wrap; /* Forces wrapping of text */
     <h3>Date: December 29, 2024</h3>
     <h4> 240 bytes</h4>
     <p>
-    This document analyzes a self-replicating JavaScript quine written that 
-    displays "2025" using binary patterns and color manipulation. The code creates 
-    an animated display where each digit is represented by a 16-bit binary
-    pattern.
-    Animation in 3 directions : top down, left to right, right to left, with
-    scrolling encoded text, colorful characters "rain", revealating and highlighting
-    the function own comments.
+This document examines a self-replicating JavaScript quine that animates "2025" using binary patterns and color effects. Each digit is represented as a 16-bit binary sequence. The animation includes three directions—top-down, left-to-right, and right-to-left—featuring scrolling encoded text, colorful character "rain," and highlights revealing the code's comment.
     </p>
 
     <iframe src="2025.html" title="2025 Content"></iframe>
@@ -86,7 +80,7 @@ setInterval(                                   // Start animation
               61102,                           // 3 ⬛⬛⬛⬜⬛⬛⬛⬜⬛⬜⬛⬜⬛⬛⬛⬜
               33442,                           // 4 ⬛⬜⬜⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬜⬛⬜
               b][                              // 5 ⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜⬛⬛⬛⬜
-              (i / w + 6) &amp; 7                  // Select the row. i/w = line; shift 6 up; cycle through 7 values using bit masking ( 7 = 111 , keep ony 3 bits)        
+              (i / w + 6) &amp; 7                  // Select the row. i/w = line; shifts 6 up; cycle through 7 values using bit masking ( 7 = 111 , keeps only 3 bits)        
               ] &amp;                              // 
                 (1 &lt;&lt; ((i % w) + t))       // Bit shifting for scrolling effect animation.  
                 ? c                            // In case it's not a zero, gives the main color ! 
